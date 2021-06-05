@@ -119,6 +119,15 @@ const neptune = new THREE.Mesh(
 neptune.position.z=415;
 scene.add( neptune );
 
+window.addEventListener('resize',() => {//if window is resized this will take care
+    // Update camera
+    camera.aspect = window.innerWidth / window.innerHeight
+    camera.updateProjectionMatrix()
+    // Update renderer
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})
+
 function revolve(obj,dist,speed){//this is how you revolve around
     obj.position.x = dist*Math.cos(speed) + 0;//for moving them in circular motion
     obj.position.z = dist*Math.sin(speed) + 0;
